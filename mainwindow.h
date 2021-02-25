@@ -24,6 +24,14 @@ private slots:
 
     void on_btnHypocycloid_clicked();
 
+    void on_spinScale_valueChanged(double arg1);
+
+    void on_intervalScale_valueChanged(double arg1);
+
+    void on_spinStep_valueChanged(int arg1);
+
+private:
+    void update_ui();
 private:
     Ui::MainWindow *ui;
 };
