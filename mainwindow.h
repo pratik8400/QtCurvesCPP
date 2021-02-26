@@ -30,6 +30,10 @@ private slots:
 
     void on_spinStep_valueChanged(int arg1);
 
+    void on_btnBackground_clicked();
+
+    void on_btnLineColor_clicked();
+
 private:
     void update_ui();
 private:

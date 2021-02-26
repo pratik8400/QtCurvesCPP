@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QColorDialog>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -9,8 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
     this->ui->spinScale->setValue(this->ui->renderArea->scale());
     this->ui->intervalScale->setValue(this->ui->renderArea->interval());
     this->ui->spinStep->setValue(this->ui->renderArea->stepCount());
-
-
 }
 
 MainWindow::~MainWindow()
@@ -52,7 +51,6 @@ void MainWindow::on_btnHuygencycloid_clicked()
 void MainWindow::on_btnHypocycloid_clicked()
 {
     this->ui->renderArea->setShape(RenderArea::Hypocycloid);
-    this->ui->renderArea->setBackgroundColor(Qt::yellow);
     this->ui->renderArea->repaint();
     update_ui();
 
@@ -71,4 +69,16 @@ void MainWindow::on_intervalScale_valueChanged(double interval)
 void MainWindow::on_spinStep_valueChanged(int count)
 {
  this->ui->renderArea->setStepCount(count);
+}
+
+void MainWindow::on_btnBackground_clicked()
+{
+    QColor color = QColorDialog::getColor(ui->renderArea->backgroundColor(), this, "Select Color");
+    this->ui->renderArea->setBackgroundColor(color);
+}
+
+void MainWindow::on_btnLineColor_clicked()
+{
+    QColor color = QColorDialog::getColor(ui->renderArea->shapeColor(), this, "Select Color");
+    this->ui->renderArea->setShapeColor(color);
 }
